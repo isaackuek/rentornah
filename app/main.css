@@ -1,0 +1,8 @@
+body {
+  background-image: url("http://i.imgur.com/27mgVZn.jpg");
+}
+
+.section--center {
+  max-width: 860px;
+  margin: 0 auto;
+}
