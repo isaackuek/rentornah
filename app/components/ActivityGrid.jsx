@@ -39,7 +39,7 @@ export default class ActivityGrid extends React.Component {
         cellHeight={200}
         style={styles.gridList}
       >
-        {this.tiles3.map(tile => (
+        {tiles3.map(tile => (
           <GridTile
             key={tile.img}
             title={tile.title}
