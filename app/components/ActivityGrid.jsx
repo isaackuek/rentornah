@@ -31,25 +31,45 @@ const tiles3 = [
   },
 ];
 
-export default class ActivityGrid extends React.Component {
-
-  render() {
-    return (
-      <GridList
-        cellHeight={200}
-        style={styles.gridList}
-      >
-        {tiles3.map(tile => (
-          <GridTile
-            key={tile.img}
-            title={tile.title}
-            subtitle={<span>by <b>{tile.author}</b></span>}
-            actionIcon={<IconButton>Click</IconButton>}
-          >
-            <img src={tile.img} />
-          </GridTile>
-        ))}
-      </GridList>
-    );
-  }
+export default ({gridData}) => {
+  return(
+    <GridList
+      cellHeight={200}
+      style={styles.gridList}
+    >
+      {gridData.map(tile => (
+        <GridTile
+          key={tile.img}
+          title={tile.title}
+          subtitle={<span>by <b>{tile.author}</b></span>}
+          actionIcon={<IconButton>Click</IconButton>}
+        >
+          <img src={tile.img} />
+        </GridTile>
+      ))}
+    </GridList>
+  );
 }
+
+// export default class ActivityGrid extends React.Component {
+//
+//   render() {
+//     return (
+//       <GridList
+//         cellHeight={200}
+//         style={styles.gridList}
+//       >
+//         {data.map(tile => (
+//           <GridTile
+//             key={tile.img}
+//             title={tile.title}
+//             subtitle={<span>by <b>{tile.author}</b></span>}
+//             actionIcon={<IconButton>Click</IconButton>}
+//           >
+//             <img src={tile.img} />
+//           </GridTile>
+//         ))}
+//       </GridList>
+//     );
+//   }
+// }
