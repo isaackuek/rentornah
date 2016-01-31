@@ -77,7 +77,6 @@ export default class SearchBar extends React.Component {
         height: '100vh',
         margin: '0',
         textAlign: 'center',
-        backgroundImage: 'url("http://i.imgur.com/27mgVZn.jpg")'
       },
       input: {
         width: '400',
@@ -93,13 +92,16 @@ export default class SearchBar extends React.Component {
         display: 'inline-block',
         margin: '10',
         marginTop: 16,
+        borderRadius: 4,
         backgroundColor: '#fff',
-        padding: 6,
-        paddingRight: 16,
-        paddingLeft: 16,
+        padding: 4,
+        paddingRight: 12,
+        paddingLeft: 12,
+
       },
       dateTextField: {
-        fontSize: 30,
+        fontSize: 24,
+        fontWeight: 300,
         color: "#fff !important",
         textAlign: 'center'
       },
@@ -139,9 +141,10 @@ export default class SearchBar extends React.Component {
 
 
     return (
-      <div className="mdl-cell mdl-cell--12-col" style={style.center}>
+      <div className="mdl-cell mdl-cell--12-col backgroundPictureFucktard" style={style.center}>
       <Fade>
-        <div style={{marginTop:200,position:'relative'}}>
+        <div className="rentornah-logo"></div>
+        <div style={{marginTop:80,position:'relative'}}>
           <input
             value={this.state.destinationText}
             type="text"

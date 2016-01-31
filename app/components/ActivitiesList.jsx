@@ -76,7 +76,6 @@ export default class ActivitesList extends React.Component {
         );
     }else{
         return(
-<<<<<<< Updated upstream
             <div
               className="activity"
               onClick={this.toStep}
@@ -92,20 +91,11 @@ export default class ActivitesList extends React.Component {
                 <p className="bar-subtitle">ACTIVITIES</p>
                   {this.props.data.selectedTodo.map(function(todo,i) {
                       return(
-                          <span className="activity--items">{todo.title}</span>
+                          <span key={i} className="activity--items">{todo.title}</span>
                       )
                   },this)}
 
               </div>
-=======
-            <div onClick={this.toStep} style={{cursor:'pointer',width:'100%',height:'10vh', backgroundColor:'#009688',paddingLeft:'20',color:'white'}}>
-              Selected Activities : 
-              {this.props.data.selectedTodo.map(function(todo,i) {
-                  return(
-                      <span key={i}>  * {todo.title}  </span>
-                  )
-              },this)}
->>>>>>> Stashed changes
             </div>
         )
     }
