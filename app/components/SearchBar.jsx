@@ -19,8 +19,6 @@ export default class SearchBar extends React.Component {
 
   }
 
-
-
   render() {
     const style = {
       center: {
