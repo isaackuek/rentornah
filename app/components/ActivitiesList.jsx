@@ -54,7 +54,7 @@ export default class ActivitesList extends React.Component {
         return (
           <div style={styles.root}>
             <Fade>
-            
+
             <RaisedButton onMouseUp={this.submitTodo} label="Submit" secondary={true} style={{position:'absolute',right:'5vw',zIndex:'100',marginTop:'75vh'}} />
 
             <Tabs>
@@ -76,17 +76,30 @@ export default class ActivitesList extends React.Component {
         );
     }else{
         return(
-            <div onClick={this.toStep} style={{cursor:'pointer',width:'100%',height:'10vh', backgroundColor:'#009688',paddingLeft:'20',color:'white'}}>
-              Selected Activities : 
-              {this.props.data.selectedTodo.map(function(todo,i) {
-                  return(
-                      <span>  * {todo.title}  </span>
-                  )
-              },this)}
+            <div
+              className="activity"
+              onClick={this.toStep}
+              style={{cursor:'pointer',
+                width:'100%',
+                height:'10vh',
+                backgroundColor:'#009688',
+
+                color:'white'}}
+                >
+              <p className="bar-back">2</p>
+              <div classname="activity--list">
+                <p className="bar-subtitle">ACTIVITIES</p>
+                  {this.props.data.selectedTodo.map(function(todo,i) {
+                      return(
+                          <span className="activity--items">{todo.title}</span>
+                      )
+                  },this)}
+
+              </div>
             </div>
         )
     }
 
-    
+
   }
 }

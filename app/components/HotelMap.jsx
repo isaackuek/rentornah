@@ -84,7 +84,7 @@ export default class HotelMap extends React.Component {
 		                <RaisedButton onMouseUp={this.submitHotel} label="Submit" secondary={true} style={{margin:'10'}} />
 
 		                {this.props.data.nearByHotel.map(function(hotel,i) {
-		           
+
 		                		let style;
 		                		if(hotel.selected){
 		                			style={
@@ -121,17 +121,17 @@ export default class HotelMap extends React.Component {
 				                                			{hotel.Description}
 				                                		</div>
 				                                	</div>
-			                                	</div>          
+			                                	</div>
 			                            	</Card>
 			                            </div>
 			                        );
 		                		}
-		                        
-		                      
+
+
 		                    },this)}
 		            </div>
 		            <div style={{width:'50%',height:'100%',display:'inline-block'}}>
-		                <GoogleMap 
+		                <GoogleMap
 		                	hoverDistance={40}
 		                	center={this.props.data.selectedDestination ? [parseFloat(this.props.data.selectedDestination.ll.lat),parseFloat(this.props.data.selectedDestination.ll.lng)]:[47.445340,-122.291810]} zoom={14}>
 		                    {this.props.data.nearByHotel.map(function(hotel,i) {
@@ -140,7 +140,7 @@ export default class HotelMap extends React.Component {
 		                        return (
 		                            <MapPoints setHotel={this.setHotelSearchText.bind(this,hotel.Name)} lat={lat} lng={lng} type="hotel" name={hotel.Name} />
 		                        );
-		                      
+
 		                    },this)}
 		                    {this.props.data.selectedTodo.map(function(todo,i) {
 		                        var lat = parseFloat(todo.latLng.split(",")[0]);
@@ -148,24 +148,40 @@ export default class HotelMap extends React.Component {
 		                        return (
 		                            <MapPoints setHoveredPlace={this.setHoveredPlace.bind(this,todo.title)} lat={lat} lng={lng} name={todo.title} />
 		                        );
-		                      
+
 		                    },this)}
 		                </GoogleMap>
-		                
+
 		            </div>
 		        </div>
 
 		    );
   		}else{
   			return(
-  				<div onClick={this.toStep} style={{cursor:'pointer',width:'100%',height:'10vh', backgroundColor:'#03A9F4',paddingLeft:'20',color:'white'}}>
-  					{this.props.data.selectedHotel ? (<p>{this.props.data.selectedHotel.Name}</p>) : (<div></div>)}
+  				<div onClick={this.toStep}
+            className="searchNavBar"
+            style={{cursor:'pointer',
+              width:'100%',
+              height:'10vh',
+              backgroundColor:'#03A9F4',
+              color:'white'
+            }}>
+            <p className="bar-back">3</p>
+            <div className="searchNavBar--location">
+              <p className="bar-subtitle">HOTEL</p>
+              {this.props.data.selectedHotel ? (
+                <p className="hotel-font">
+                  {this.props.data.selectedHotel.Name}
+                </p>
+              ) : (<div></div>)}
+            </div>
+
   				</div>
   			)
   		}
-  		
-  	
-    
+
+
+
   }
 
 

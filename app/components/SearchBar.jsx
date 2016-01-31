@@ -182,22 +182,43 @@ export default class SearchBar extends React.Component {
               </div>
         </div>
         </Fade>
-        
+
       </div>
     );
     }else{
+      const style = {
+        searchNavBar: {
+          width:'100%',
+          height:'10vh',
+          backgroundColor:'#0288D1',
+        }
+      }
       return(
-          <div style={{width:'100%',height:'10vh', backgroundColor:'#0288D1'}}>
+          <div style={style.searchNavBar}>
             {this.props.data.selectedDestination ? (
-                <div onClick={this.toStep} style={{cursor:'pointer',color:'white', fontSize:'20px',paddingLeft:'20'}}>
-                    <p>Location : {this.props.data.selectedDestination.s}</p>
-                    <p>Date : from {this.props.data.startDate} to {this.props.data.endDate}</p>
+                <div
+                  className="searchNavBar"
+                  onClick={this.toStep}
+                  style={{
+                    cursor:'pointer',
+                    color:'white',
+                    fontSize:'20px',
+                   }}
+                   >
+                    <p className="bar-back">1</p>
+                    <div className="searchNavBar--location">
+                      <p className="bar-subtitle">LOCATION</p> {this.props.data.selectedDestination.s}
+                    </div>
+                    <div className="searchNavBar--date">
+                      <p className="bar-subtitle">FROM</p>
+                      {this.props.data.startDate} to {this.props.data.endDate}
+                    </div>
                 </div>
               ) : (
                 <div>
                 </div>
               )
-            }  
+            }
           </div>
       )
     }

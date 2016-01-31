@@ -58,13 +58,13 @@ export default class ComparisonContent extends React.Component {
   }
   removeEmail(){
     var self = this
-    setTimeout(function(){ 
-      alert("Email Sent to " + self.state.email + "!"); 
+    setTimeout(function(){
+      alert("Email Sent to " + self.state.email + "!");
       self.setState({
         email:''
       })
     }, 1500);
-    
+
   }
   openExpedia(){
     window.open("http://www.expedia.com");
@@ -91,7 +91,7 @@ export default class ComparisonContent extends React.Component {
             <Card style={styles.card}>
               <a href="/" className="bus">
               </a>
-              <CardTitle styles={styles.center} title="Bus" subtitle="Card subtitle" />
+              <CardTitle styles={styles.center} title="Bus" />
               <CardText>
 
                 {this.props.data.farthestBus ? (
@@ -99,37 +99,37 @@ export default class ComparisonContent extends React.Component {
                         <h5> To the farthest location from your hotel to: </h5>
                         <h4>{this.props.data.farthestBus.place.title}</h4>
                         <h5> Takes:</h5>
-                        <h4>{this.props.data.farthestBus.bus.routes[0].legs[0].duration.text}</h4> 
+                        <h4>{this.props.data.farthestBus.bus.routes[0].legs[0].duration.text}</h4>
                     </div>
                 ):(
                     <div>
                         Fetching Information...
                     </div>
                 )}
-                
+
               </CardText>
               <RaisedButton label="Details" onTouchTap={this.handleOpen.bind(this,"bus")} style={{marginBottom:'50'}}/>
 
-              
+
             </Card>
             <Card style={styles.card}>
               <a href="/" className="uber">
               </a>
-              <CardTitle styles={styles.center} title="Uber" subtitle="Card subtitle" />
+              <CardTitle styles={styles.center} title="Uber" />
               <CardText>
                 {this.props.data.farthestUber ? (
                     <div style={{height:'250'}}>
                         <h5> To the farthest location from your hotel to: </h5>
                         <h4> {this.props.data.farthestUber.place.title}</h4>
                         <h5> Costs:</h5>
-                        <h4> ${this.props.data.farthestUber.uber.prices[0].high_estimate}</h4> 
+                        <h4> ${this.props.data.farthestUber.uber.prices[0].high_estimate}</h4>
                     </div>
                 ):(
                     <div>
                         Fetching Information...
                     </div>
                 )}
-                
+
               </CardText>
               <RaisedButton label="Details" onTouchTap={this.handleOpen.bind(this,"uber")} style={{marginBottom:'50'}}/>
 
@@ -137,14 +137,14 @@ export default class ComparisonContent extends React.Component {
             <Card style={styles.card}>
               <a href="/" className="car">
               </a>
-              <CardTitle styles={styles.center} title="Car" subtitle="Card subtitle" />
+              <CardTitle styles={styles.center} title="Car" />
               <CardText>
                   {this.props.data.cheapestCarRental ? (
                       <div style={{height:'250'}}>
                           <h5> Rent a Cheapest car at: </h5>
                           <h4> {this.props.data.selectedDestination.s}</h4>
                           <h5> Costs:</h5>
-                          <h4>${parseInt(parseInt(this.props.data.cheapestCarRental.Price.TotalRate.Value)/Math.round(Math.abs((new Date(this.props.data.startDate).getTime() - new Date(this.props.data.endDate).getTime())/(24*60*60*1000))))} a day</h4> 
+                          <h4>${parseInt(parseInt(this.props.data.cheapestCarRental.Price.TotalRate.Value)/Math.round(Math.abs((new Date(this.props.data.startDate).getTime() - new Date(this.props.data.endDate).getTime())/(24*60*60*1000))))} a day</h4>
                       </div>
                   ):(
                       <div>
@@ -153,12 +153,12 @@ export default class ComparisonContent extends React.Component {
                   )}
               </CardText>
               <RaisedButton label="Book On Expedia!" onMouseUp={this.openExpedia} style={{marginBottom:'50'}}/>
-              
+
             </Card>
             <div>
                 <TextField
                   hintText="Type in your friends email"
-                  floatingLabelText="Mail this information to them!"
+                  floatingLabelText="Email Comparison Sheet"
                   value={this.state.email}
                   onChange={this.setEmail.bind(this)}
                 />
@@ -177,7 +177,7 @@ export default class ComparisonContent extends React.Component {
                       {this.props.data.selectedTodo.map(function(todo,i) {
                           if(this.props.data.farthestUber){
                               return (
-                                  <div> 
+                                  <div>
                                         Uber from {this.props.data.selectedHotel.Name} to {todo.title} costs {todo.uberPrice.prices[0].estimate}
                                   </div>
                               );
@@ -185,30 +185,30 @@ export default class ComparisonContent extends React.Component {
                             return(
                               <div></div>)
                           }
-                          
-                        },this)}                      
+
+                        },this)}
                   </div>
               ) : (
                   <div>
                       {this.props.data.selectedTodo.map(function(todo,i) {
                           if(this.props.data.farthestBus){
                               return (
-                              <div> 
+                              <div>
                                     Bus from {this.props.data.selectedHotel.Name} to {todo.title} takes {todo.busRoutes.routes[0].legs[0].duration.text}
                               </div>
                           );
                           }else{
                             return(<div></div>);
                           }
-                          
+
                         },this)}
                   </div>
               )}
-               
+
               </Dialog>
-              
-              
-            
+
+
+
             </Fade>
           </div>
         );
@@ -217,7 +217,7 @@ export default class ComparisonContent extends React.Component {
             <div></div>
         )
     }
-    
+
   }
 
 };
