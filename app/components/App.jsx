@@ -1,7 +1,6 @@
 import React from 'react';
 import SearchBar from './SearchBar.jsx';
 import ActivitiesList from './ActivitiesList.jsx';
-import HotelMap from './HotelMap.jsx';
 import ComparisonContent from './ComparisonContent.jsx';
 import AppBar from 'material-ui/lib/app-bar';
 
@@ -13,25 +12,13 @@ const muiTheme = getMuiTheme({
   primary1Color: Colors.indigo500
 });
 
-
-const NavBarTop = () => (
-  <AppBar
-    title="Rentornah"
-    iconClassNameRight="muidocs-icon-navigation-expand-more"
-  />
-);
-
-export default NavBarTop;
-
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <NavBarTop />
+      <div className="mdl-layout">
         <div className="mdl-grid section--center">
           <SearchBar />
           <ActivitiesList />
-          <HotelMap />
           <ComparisonContent />
         </div>
       </div>

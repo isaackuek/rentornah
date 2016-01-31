@@ -2,7 +2,59 @@ body {
   background-image: url("http://i.imgur.com/27mgVZn.jpg");
 }
 
-.section--center {
-  max-width: 860px;
+.mdl-layout {
+  align-items: center;
+  justify-content: center;
+  flex: auto;
+}
+
+input[type="text"] {
+  border: 0px solid white;
+  border-bottom: 1px solid #c4c4c4;
+  border-radius: 2px;
+  color: #fff;
+  background-color: transparent;
+  padding: 10px 12px;
+  width: 100%;
+
+  font-size: 32px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+input:focus {
+  border: 0px solid white;
+}
+
+.bus {
+  display: block;
+  text-indent: -9999px;
   margin: 0 auto;
+  margin-top: 16px;
+  width: 100px;
+  height: 100px;
+  background: url("bus.svg");
+  background-size: 100px 100px;
+}
+
+.car {
+  display: block;
+  text-indent: -9999px;
+  margin: 0 auto;
+  margin-top: 16px;
+  width: 100px;
+  height: 100px;
+  background: url("car.svg");
+  background-size: 100px 100px;
+}
+
+.uber {
+  display: block;
+  text-indent: -9999px;
+  margin: 0 auto;
+  margin-top: 16px;
+  width: 100px;
+  height: 100px;
+  background: url("uber.svg");
+  background-size: 100px 100px;
 }

@@ -8,12 +8,12 @@ import Tab from 'material-ui/lib/tabs/tab';
 
 const styles = {
   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
+    margin: '0 auto',
     justifyContent: 'space-around',
+    marginTop: 90,
   },
   gridList: {
-    width: 860,
+    width: 'auto',
     height: 400,
     overflowY: 'auto',
     marginBottom: 24,
