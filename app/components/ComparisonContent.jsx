@@ -96,9 +96,9 @@ export default class ComparisonContent extends React.Component {
 
                 {this.props.data.farthestBus ? (
                     <div style={{height:'250'}}>
-                        <h5> To the farthest location from your hotel to: </h5>
+                        <h5>Busing to the farthest point of interest</h5>
                         <h4>{this.props.data.farthestBus.place.title}</h4>
-                        <h5> Takes:</h5>
+                        <h5>Takes</h5>
                         <h4>{this.props.data.farthestBus.bus.routes[0].legs[0].duration.text}</h4>
                     </div>
                 ):(
@@ -119,9 +119,9 @@ export default class ComparisonContent extends React.Component {
               <CardText>
                 {this.props.data.farthestUber ? (
                     <div style={{height:'250'}}>
-                        <h5> To the farthest location from your hotel to: </h5>
+                        <h5>Taking an Uber to the farthest point of interest </h5>
                         <h4> {this.props.data.farthestUber.place.title}</h4>
-                        <h5> Costs:</h5>
+                        <h5>Costs</h5>
                         <h4> ${this.props.data.farthestUber.uber.prices[0].high_estimate}</h4>
                     </div>
                 ):(
@@ -141,9 +141,9 @@ export default class ComparisonContent extends React.Component {
               <CardText>
                   {this.props.data.cheapestCarRental ? (
                       <div style={{height:'250'}}>
-                          <h5> Rent a Cheapest car at: </h5>
+                          <h5>Renting the cheapest car in</h5>
                           <h4> {this.props.data.selectedDestination.s}</h4>
-                          <h5> Costs:</h5>
+                          <h5>Costs</h5>
                           <h4>${parseInt(parseInt(this.props.data.cheapestCarRental.Price.TotalRate.Value)/Math.round(Math.abs((new Date(this.props.data.startDate).getTime() - new Date(this.props.data.endDate).getTime())/(24*60*60*1000))))} a day</h4>
                       </div>
                   ):(
