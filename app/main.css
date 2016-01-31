@@ -1,6 +1,6 @@
-body {
+/*body {
   background-image: url("http://i.imgur.com/27mgVZn.jpg");
-}
+}*/
 
 .mdl-layout {
   align-items: center;
@@ -57,4 +57,30 @@ input:focus {
   height: 100px;
   background: url("uber.svg");
   background-size: 100px 100px;
+}
+.example-appear {
+  opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 1s ease-in;
 }

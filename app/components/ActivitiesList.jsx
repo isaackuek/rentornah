@@ -2,115 +2,89 @@ import React from 'react';
 
 import ActivityGrid from './ActivityGrid';
 // import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import Actions from '../actions/actions';
+import RaisedButton from 'material-ui/lib/raised-button';
 
 import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+// var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
+class Fade extends ReactCSSTransitionGroup{}
+Fade.defaultProps= {
+  component: 'div',
+  transitionName: 'example',
+  transitionAppear: true,
+  transitionAppearTimeout: 2000,
+  transitionEnterTimeout: 2000,
+  transitionLeaveTimeout: 1000,
+};
 const styles = {
   root: {
     margin: '0 auto',
     justifyContent: 'space-around',
-    marginTop: 90,
+    width:'100%'
   },
-  gridList: {
-    width: 'auto',
-    height: 400,
-    overflowY: 'auto',
-    marginBottom: 24,
-  },
+
 };
 
 export default class ActivitesList extends React.Component {
+
   constructor(props) {
     super(props);
-
     this.state = {
-      tileData1: [
-        {
-          img: 'http://lorempixel.com/500/400/nature/',
-          title: 'Breakfast',
-          author: 'jill111',
-        },
-        {
-          img: 'http://lorempixel.com/500/401/nature/',
-          title: 'Tasty burger',
-          author: 'pashminu',
-        },
-        {
-          img: 'http://lorempixel.com/500/402/nature/',
-          title: 'Camera',
-          author: 'Danson67',
-        },
-      ],
-      tileData2: [
-        {
-          img: 'http://lorempixel.com/500/404/nature/',
-          title: 'Hats',
-          author: 'Hans',
-        },
-        {
-          img: 'http://lorempixel.com/500/405/nature/',
-          title: 'Honey',
-          author: 'fancycravel',
-        },
-        {
-          img: 'http://lorempixel.com/500/406/nature/',
-          title: 'Vegetables',
-          author: 'jill111',
-        },
-        {
-          img: 'http://lorempixel.com/500/407/nature/',
-          title: 'Water plant',
-          author: 'BkrmadtyaKarki',
-        },
-      ],
-      tileData3: [
-        {
-          img: 'http://lorempixel.com/500/400/nature/',
-          title: 'Breakfast',
-          author: 'jill111',
-        },
-        {
-          img: 'http://lorempixel.com/500/401/nature/',
-          title: 'Tasty burger',
-          author: 'pashminu',
-        },
-        {
-          img: 'http://lorempixel.com/500/402/nature/',
-          title: 'Camera',
-          author: 'Danson67',
-        },
-        {
-          img: 'http://lorempixel.com/500/403/nature/',
-          title: 'Morning',
-          author: 'fancycrave1',
-        },
-      ],
+        nextButtonHovered: false
     };
   }
 
-  render() {
-    const tileData1 = this.state.tileData1;
-    const tileData2 = this.state.tileData2;
-    const tileData3 = this.state.tileData3;
+  hoverNextButton(){
+      this.setState({
+        nextButtonHovered: !this.state.nextButtonHovered
+      })
+  }
+  submitTodo(){
+      Actions.submitTodo();
+  }
 
-    return (
-      <div style={styles.root}>
-        <Tabs>
-          <Tab label="Food" >
-            <ActivityGrid gridData={tileData1} />
-          </Tab>
-          <Tab label="Sightseeing">
-            <ActivityGrid gridData={tileData2}/>
-          </Tab>
-          <Tab label="Nightlife">
-            <ActivityGrid gridData={tileData3}/>
-          </Tab>
-          <Tab label="Shopping">
-            <ActivityGrid gridData={tileData1}/>
-          </Tab>
-        </Tabs>
-      </div>
-    );
+  render() {
+
+    if(this.props.data.step == 1){
+        return (
+          <div style={styles.root}>
+            <Fade>
+            
+            <RaisedButton onMouseUp={this.submitTodo} label="Submit" secondary={true} style={{position:'absolute',right:'5vw',zIndex:'100',marginTop:'75vh'}} />
+
+            <Tabs>
+              <Tab label="Food" >
+                <ActivityGrid gridData={this.props.data.thingsTodoFood} />
+              </Tab>
+              <Tab label="Sightseeing">
+                <ActivityGrid gridData={this.props.data.thingsTodoSightSeeing}/>
+              </Tab>
+              <Tab label="Nightlife">
+                <ActivityGrid gridData={this.props.data.thingsTodoNightLife}/>
+              </Tab>
+              <Tab label="All">
+                <ActivityGrid gridData={this.props.data.thingsToDo}/>
+              </Tab>
+            </Tabs>
+            </Fade>
+          </div>
+        );
+    }else{
+        return(
+            <div style={{width:'100%',height:'10vh', backgroundColor:'#009688',paddingLeft:'20',color:'white'}}>
+              Selected Activities : 
+              {this.props.data.selectedTodo.map(function(todo,i) {
+                  return(
+                      <span>  * {todo.title}  </span>
+                  )
+              },this)}
+            </div>
+        )
+    }
+
+    
   }
 }
