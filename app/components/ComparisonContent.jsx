@@ -175,7 +175,7 @@ export default class ComparisonContent extends React.Component {
               {(this.state.dialogueType == "uber") ? (
                   <div>
                       {this.props.data.selectedTodo.map(function(todo,i) {
-                          if(this.props.data.farthestUber){
+                          if(todo.uberPrice){
                               return (
                                   <div>
                                         Uber from {this.props.data.selectedHotel.Name} to {todo.title} costs {todo.uberPrice.prices[0].estimate}
@@ -191,7 +191,7 @@ export default class ComparisonContent extends React.Component {
               ) : (
                   <div>
                       {this.props.data.selectedTodo.map(function(todo,i) {
-                          if(this.props.data.farthestBus){
+                          if(todo.busRoutes){
                               return (
                               <div>
                                     Bus from {this.props.data.selectedHotel.Name} to {todo.title} takes {todo.busRoutes.routes[0].legs[0].duration.text}
