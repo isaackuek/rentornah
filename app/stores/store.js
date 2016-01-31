@@ -11,6 +11,8 @@ var fakeActivities = {"total":66,"regionId":"178307","endDate":"2016-02-13","act
 var Store = Reflux.createStore({
     listenables: [actions],
     data: { 
+    	uberArray:[],
+    	busArray:[],
     	step: 0,
         msg: "", 
         thingsToDo:[],
@@ -179,21 +181,20 @@ var Store = Reflux.createStore({
             },
             success: function (data) {
                 self.data.selectedTodo[i].uberPrice = data;
-
-                if(self.data.farthestUber){
-                	if(data.prices[0].high_estimate > self.data.farthestUber.uber.high_estimate) {
-                		self.data.farthestUber.uber = data;
-                		self.data.farthestUber.place = self.data.selectedTodo[i];
-                	}
-                }else{
+                self.data.uberArray.push(data)
+                if(self.data.uberArray.length === self.data.selectedTodo.length) {
+                	var highest = 0;
                 	self.data.farthestUber = {};
-                	self.data.farthestUber.uber = data;
-                	self.data.farthestUber.place = self.data.selectedTodo[i];
+                	for (var j = self.data.selectedTodo.length - 1; j >= 0; j--) {
+                		if(self.data.selectedTodo[j].uberPrice.prices[0].high_estimate > highest){
+                			highest = self.data.selectedTodo[j].uberPrice.prices[0].high_estimate
+                			self.data.farthestUber.uber = self.data.selectedTodo[j].uberPrice.prices[0].high_estimate
+                			self.data.farthestUber.place = self.data.selectedTodo[j].title;
+                		}
+                	};
                 }
 
-
                 self.trigger(self.data);
-                console.log("uber price", self.data.selectedTodo[i].uberPrice)
             }
         });
     },
@@ -210,16 +211,30 @@ var Store = Reflux.createStore({
             },
             success: function (data) {
                 self.data.selectedTodo[i].busRoutes = data;
-                if(self.data.farthestBus){
-                	if(data.routes[0].legs[0].duration.value > self.data.farthestBus.bus.routes[0].legs[0].duration.value) {
-                		self.data.farthestBus.bus = data;
-                		self.data.farthestBus.place = self.data.selectedTodo[i];
-                	}
-                }else{
-                	self.data.farthestBus = {}
-                	self.data.farthestBus.bus = data;
-                	self.data.farthestBus.place = self.data.selectedTodo[i];
+                self.data.busArray.push(data)
+
+                if(self.data.busArray.length == self.data.selectedTodo.length) {
+                	var highest = 0;
+                	self.data.farthestBus = {};
+                	for (var j = self.data.selectedTodo.length - 1; j >= 0; j--) {
+                		if(self.data.selectedTodo[j].busRoutes.routes[0].legs[0].duration.value > highest){
+                			highest = self.data.selectedTodo[j].busRoutes.routes[0].legs[0].duration.value
+                			self.data.farthestBus.bus = self.data.selectedTodo[j].busRoutes.routes[0].legs[0].duration.text
+                			self.data.farthestBus.place = self.data.selectedTodo[j].title;
+                		}
+                	};
                 }
+
+                // if(self.data.farthestBus){
+                // 	if(data.routes[0].legs[0].duration.value > self.data.farthestBus.bus.routes[0].legs[0].duration.value) {
+                // 		self.data.farthestBus.bus = data;
+                // 		self.data.farthestBus.place = self.data.selectedTodo[i];
+                // 	}
+                // }else{
+                // 	self.data.farthestBus = {}
+                // 	self.data.farthestBus.bus = data;
+                // 	self.data.farthestBus.place = self.data.selectedTodo[i];
+                // }
                 self.trigger(self.data);
                 console.log("bus route",self.data.selectedTodo[i].busRoutes)
 

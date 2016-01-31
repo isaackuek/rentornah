@@ -108,7 +108,7 @@ export default class HotelMap extends React.Component {
 		                		}
 		                		if(show){
 		                			return (
-			                            <div onClick={this.setHotel.bind(this,i)} onMouseEnter={this.hoverHotel.bind(this,i)} onMouseLeave={this.unhoverHotel.bind(this,i)} style={{margin:'5px'}}>
+			                            <div key={i} onClick={this.setHotel.bind(this,i)} onMouseEnter={this.hoverHotel.bind(this,i)} onMouseLeave={this.unhoverHotel.bind(this,i)} style={{margin:'5px'}}>
 			                            	<Card style={style}>
 			                            		<div style={{display: 'flex',alignItems:'center'}}>
 				                        			<div style={{display:'inline-block', margin:'15px'}}>
@@ -138,7 +138,7 @@ export default class HotelMap extends React.Component {
 		                        var lat = parseFloat(hotel.Location.GeoLocation.Latitude);
 		                        var lng = parseFloat(hotel.Location.GeoLocation.Longitude);
 		                        return (
-		                            <MapPoints setHotel={this.setHotelSearchText.bind(this,hotel.Name)} lat={lat} lng={lng} type="hotel" name={hotel.Name} />
+		                            <MapPoints key={i} setHotel={this.setHotelSearchText.bind(this,hotel.Name)} lat={lat} lng={lng} type="hotel" name={hotel.Name} />
 		                        );
 
 		                    },this)}
@@ -146,7 +146,7 @@ export default class HotelMap extends React.Component {
 		                        var lat = parseFloat(todo.latLng.split(",")[0]);
 		                        var lng = parseFloat(todo.latLng.split(",")[1]);
 		                        return (
-		                            <MapPoints setHoveredPlace={this.setHoveredPlace.bind(this,todo.title)} lat={lat} lng={lng} name={todo.title} />
+		                            <MapPoints key={i} setHoveredPlace={this.setHoveredPlace.bind(this,todo.title)} lat={lat} lng={lng} name={todo.title} />
 		                        );
 
 		                    },this)}

@@ -96,10 +96,17 @@ export default class ComparisonContent extends React.Component {
 
                 {this.props.data.farthestBus ? (
                     <div style={{height:'250'}}>
+<<<<<<< Updated upstream
                         <h5>Busing to the farthest point of interest</h5>
                         <h4>{this.props.data.farthestBus.place.title}</h4>
                         <h5>Takes</h5>
                         <h4>{this.props.data.farthestBus.bus.routes[0].legs[0].duration.text}</h4>
+=======
+                        <h5> To the farthest location from your hotel to: </h5>
+                        <h4>{this.props.data.farthestBus.place}</h4>
+                        <h5> Takes:</h5>
+                        <h4>{this.props.data.farthestBus.bus}</h4> 
+>>>>>>> Stashed changes
                     </div>
                 ):(
                     <div>
@@ -119,10 +126,17 @@ export default class ComparisonContent extends React.Component {
               <CardText>
                 {this.props.data.farthestUber ? (
                     <div style={{height:'250'}}>
+<<<<<<< Updated upstream
                         <h5>Taking an Uber to the farthest point of interest </h5>
                         <h4> {this.props.data.farthestUber.place.title}</h4>
                         <h5>Costs</h5>
                         <h4> ${this.props.data.farthestUber.uber.prices[0].high_estimate}</h4>
+=======
+                        <h5> To the farthest location from your hotel to: </h5>
+                        <h4> {this.props.data.farthestUber.place}</h4>
+                        <h5> Costs:</h5>
+                        <h4> ${this.props.data.farthestUber.uber}</h4> 
+>>>>>>> Stashed changes
                     </div>
                 ):(
                     <div>
@@ -177,13 +191,17 @@ export default class ComparisonContent extends React.Component {
                       {this.props.data.selectedTodo.map(function(todo,i) {
                           if(todo.uberPrice){
                               return (
+<<<<<<< Updated upstream
                                   <div>
+=======
+                                  <div key={i}> 
+>>>>>>> Stashed changes
                                         Uber from {this.props.data.selectedHotel.Name} to {todo.title} costs {todo.uberPrice.prices[0].estimate}
                                   </div>
                               );
                           }else{
                             return(
-                              <div></div>)
+                              <div key={i}></div>)
                           }
 
                         },this)}
@@ -193,7 +211,11 @@ export default class ComparisonContent extends React.Component {
                       {this.props.data.selectedTodo.map(function(todo,i) {
                           if(todo.busRoutes){
                               return (
+<<<<<<< Updated upstream
                               <div>
+=======
+                              <div key={i}> 
+>>>>>>> Stashed changes
                                     Bus from {this.props.data.selectedHotel.Name} to {todo.title} takes {todo.busRoutes.routes[0].legs[0].duration.text}
                               </div>
                           );
