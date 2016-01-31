@@ -36,7 +36,9 @@ export default class ActivitesList extends React.Component {
         nextButtonHovered: false
     };
   }
-
+  toStep(){
+    Actions.toStep(1);
+  }
   hoverNextButton(){
       this.setState({
         nextButtonHovered: !this.state.nextButtonHovered
@@ -74,7 +76,7 @@ export default class ActivitesList extends React.Component {
         );
     }else{
         return(
-            <div style={{width:'100%',height:'10vh', backgroundColor:'#009688',paddingLeft:'20',color:'white'}}>
+            <div onClick={this.toStep} style={{cursor:'pointer',width:'100%',height:'10vh', backgroundColor:'#009688',paddingLeft:'20',color:'white'}}>
               Selected Activities : 
               {this.props.data.selectedTodo.map(function(todo,i) {
                   return(

@@ -138,6 +138,10 @@ var Store = Reflux.createStore({
             }
         });
     },
+    onToStep(step){
+    	this.data.step = step;
+    	this.trigger(this.data);
+    },
     onSetHotel(index) {
         for (var i = this.data.nearByHotel.length - 1; i >= 0; i--) {
             if(i == index) {

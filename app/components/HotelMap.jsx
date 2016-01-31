@@ -65,6 +65,9 @@ export default class HotelMap extends React.Component {
 	  		hoveredPlace: "Clicked Activity: " + place
 	  	})
   }
+  toStep(){
+  	Actions.toStep(2);
+  }
   render() {
 
   		if(this.props.data.step== 2){
@@ -155,7 +158,7 @@ export default class HotelMap extends React.Component {
 		    );
   		}else{
   			return(
-  				<div style={{width:'100%',height:'10vh', backgroundColor:'#03A9F4',paddingLeft:'20',color:'white'}}>
+  				<div onClick={this.toStep} style={{cursor:'pointer',width:'100%',height:'10vh', backgroundColor:'#03A9F4',paddingLeft:'20',color:'white'}}>
   					{this.props.data.selectedHotel ? (<p>{this.props.data.selectedHotel.Name}</p>) : (<div></div>)}
   				</div>
   			)

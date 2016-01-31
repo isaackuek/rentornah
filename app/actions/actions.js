@@ -19,7 +19,8 @@ var actions = Reflux.createActions([
     "findTodo",
     "setStartDate",
     "setEndDate",
-    "submitStartEndDate"
+    "submitStartEndDate",
+    "toStep"
 ]);
 
 module.exports = actions;

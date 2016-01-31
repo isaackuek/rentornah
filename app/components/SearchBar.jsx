@@ -67,6 +67,9 @@ export default class SearchBar extends React.Component {
       Actions.submitStartEndDate();
 
   }
+  toStep(){
+    Actions.toStep(0);
+  }
 
   render() {
     const style = {
@@ -186,7 +189,7 @@ export default class SearchBar extends React.Component {
       return(
           <div style={{width:'100%',height:'10vh', backgroundColor:'#0288D1'}}>
             {this.props.data.selectedDestination ? (
-                <div style={{color:'white', fontSize:'20px',paddingLeft:'20'}}>
+                <div onClick={this.toStep} style={{cursor:'pointer',color:'white', fontSize:'20px',paddingLeft:'20'}}>
                     <p>Location : {this.props.data.selectedDestination.s}</p>
                     <p>Date : from {this.props.data.startDate} to {this.props.data.endDate}</p>
                 </div>
