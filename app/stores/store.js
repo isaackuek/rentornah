@@ -9,7 +9,8 @@ var $ = require('jquery');
 var Store = Reflux.createStore({
     listenables: [actions],
     data: {
-      uberArray:[],
+    	uberArray:[],
+    	busArray:[],
     	step: 0,
         msg: "",
         thingsToDo:[],
@@ -208,16 +209,30 @@ var Store = Reflux.createStore({
             },
             success: function (data) {
                 self.data.selectedTodo[i].busRoutes = data;
-                if(self.data.farthestBus){
-                	if(data.routes[0].legs[0].duration.value > self.data.farthestBus.bus.routes[0].legs[0].duration.value) {
-                		self.data.farthestBus.bus = data;
-                		self.data.farthestBus.place = self.data.selectedTodo[i];
-                	}
-                }else{
-                	self.data.farthestBus = {}
-                	self.data.farthestBus.bus = data;
-                	self.data.farthestBus.place = self.data.selectedTodo[i];
+                self.data.busArray.push(data)
+
+                if(self.data.busArray.length == self.data.selectedTodo.length) {
+                	var highest = 0;
+                	self.data.farthestBus = {};
+                	for (var j = self.data.selectedTodo.length - 1; j >= 0; j--) {
+                		if(self.data.selectedTodo[j].busRoutes.routes[0].legs[0].duration.value > highest){
+                			highest = self.data.selectedTodo[j].busRoutes.routes[0].legs[0].duration.value
+                			self.data.farthestBus.bus = self.data.selectedTodo[j].busRoutes.routes[0].legs[0].duration.text
+                			self.data.farthestBus.place = self.data.selectedTodo[j].title;
+                		}
+                	};
                 }
+
+                // if(self.data.farthestBus){
+                // 	if(data.routes[0].legs[0].duration.value > self.data.farthestBus.bus.routes[0].legs[0].duration.value) {
+                // 		self.data.farthestBus.bus = data;
+                // 		self.data.farthestBus.place = self.data.selectedTodo[i];
+                // 	}
+                // }else{
+                // 	self.data.farthestBus = {}
+                // 	self.data.farthestBus.bus = data;
+                // 	self.data.farthestBus.place = self.data.selectedTodo[i];
+                // }
                 self.trigger(self.data);
                 console.log("bus route",self.data.selectedTodo[i].busRoutes)
 

@@ -154,7 +154,7 @@ export default class SearchBar extends React.Component {
                 <div style={style.suggestion}>
                     {this.props.data.destinationSuggestion.map(function(suggestion,i) {
                           return (
-                            <p onMouseEnter={this.hoverDestination.bind(this,i)} onMouseLeave={this.hoverDestination.bind(this,i)} style={suggestion.hover ? {color:'#008080',margin:10, fontSize:16,cursor:'pointer',borderBottom:'1px solid #008080',padding:9} : {padding:9,color:'black',margin:10, fontSize:16,cursor:'pointer',borderBottom:'1px solid black'}} key={suggestion.i} onClick={this.submitDestination.bind(this,suggestion)}>{suggestion.s}</p>
+                            <p key={i} onMouseEnter={this.hoverDestination.bind(this,i)} onMouseLeave={this.hoverDestination.bind(this,i)} style={suggestion.hover ? {color:'#008080',margin:10, fontSize:16,cursor:'pointer',borderBottom:'1px solid #008080',padding:9} : {padding:9,color:'black',margin:10, fontSize:16,cursor:'pointer',borderBottom:'1px solid black'}} key={suggestion.i} onClick={this.submitDestination.bind(this,suggestion)}>{suggestion.s}</p>
                           );
                     },this)}
                 </div>
