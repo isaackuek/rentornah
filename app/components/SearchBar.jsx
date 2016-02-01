@@ -86,7 +86,8 @@ export default class SearchBar extends React.Component {
         marginRight: 'auto',
         left: 0,
         right: 0,
-        position: 'absolute'
+        position: 'absolute',
+        color: 'black'
       },
       date: {
         display: 'inline-block',
